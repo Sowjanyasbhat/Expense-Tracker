@@ -45,9 +45,12 @@ const monthSpent = expenses
 return (
   <div className="container">
     <h1>Expense Tracker</h1>
-    <div className="total-card">...</div>
+<div className="total-card">
+  <p>{filter === "All" ? "Total Spent" : `Total Spent on ${filter}`}</p>
+  <h2>₹{total}</h2>
+</div>
 <Budget
-  budget={Number(budget)}
+  budget={budget}
   onBudgetChange={setBudget}
   spent={monthSpent}
 />

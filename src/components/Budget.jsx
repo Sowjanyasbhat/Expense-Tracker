@@ -1,7 +1,8 @@
 function Budget({ budget, onBudgetChange, spent }) {
-  const percent = budget > 0 ? Math.min((spent / budget) * 100, 100) : 0;
-  const isOver = budget > 0 && spent > budget;
-  const isNear = budget > 0 && !isOver && spent >= budget * 0.8;
+  const limit = Number(budget);
+  const percent = limit > 0 ? Math.min((spent / limit) * 100, 100) : 0;
+  const isOver = limit > 0 && spent > limit;
+  const isNear = limit > 0 && !isOver && spent >= limit * 0.8;
 
   return (
     <div className="budget-card">
@@ -13,7 +14,7 @@ function Budget({ budget, onBudgetChange, spent }) {
         onChange={(e) => onBudgetChange(e.target.value)}
       />
 
-      {budget > 0 && (
+      {limit > 0 && (
         <>
           <div className="progress">
             <div
@@ -22,11 +23,11 @@ function Budget({ budget, onBudgetChange, spent }) {
             />
           </div>
           <p className="budget-text">
-            ₹{spent} spent of ₹{budget}
+            ₹{spent} spent of ₹{limit}
           </p>
           {isOver && (
             <p className="warning">
-              You have exceeded your budget by ₹{spent - budget}!
+              You have exceeded your budget by ₹{spent - limit}!
             </p>
           )}
           {isNear && (
