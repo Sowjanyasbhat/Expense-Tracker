@@ -22,14 +22,17 @@ function App() {
 
   const total = expenses.reduce((sum, e) => sum + e.amount, 0);
 
-  return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <h2>Total: ₹{total}</h2>
-      <ExpenseForm onAddExpense={addExpense} />
-      <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
+ return (
+  <div className="container">
+    <h1>Expense Tracker</h1>
+    <div className="total-card">
+      <p>Total Spent</p>
+      <h2>₹{total}</h2>
     </div>
-  );
+    <ExpenseForm onAddExpense={addExpense} />
+    <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
+  </div>
+);
 }
 
 export default App;
