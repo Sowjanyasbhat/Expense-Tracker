@@ -158,3 +158,61 @@ h1 {
   margin: 0 0 10px;
   text-align: center;
 }
+.budget-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.budget-card h3 {
+  margin: 0 0 10px;
+}
+
+.budget-card input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.progress {
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #10b981;
+  transition: width 0.3s;
+}
+
+.progress-bar.near {
+  background: #f59e0b;
+}
+
+.progress-bar.over {
+  background: #ef4444;
+}
+
+.budget-text {
+  margin: 8px 0 0;
+  color: #6b7280;
+}
+
+.warning {
+  color: #b91c1c;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+
+.caution {
+  color: #b45309;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
