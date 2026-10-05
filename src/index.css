@@ -133,3 +133,16 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+.expense-filter {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expense-filter select {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
