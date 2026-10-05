@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
+import ExpenseChart from "./components/ExpenseChart";
 
 function App() {
   const [expenses, setExpenses] = useState(() => {
@@ -36,8 +37,9 @@ return (
       <p>{filter === "All" ? "Total Spent" : `Total Spent on ${filter}`}</p>
       <h2>₹{total}</h2>
     </div>
-    <ExpenseForm onAddExpense={addExpense} />
-    <ExpenseFilter selected={filter} onChange={setFilter} />
+   <ExpenseForm onAddExpense={addExpense} />
+<ExpenseChart expenses={expenses} />
+<ExpenseFilter selected={filter} onChange={setFilter} />
     <ExpenseList expenses={filteredExpenses} onDeleteExpense={deleteExpense} />
   </div>
 );
