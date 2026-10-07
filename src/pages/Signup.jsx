@@ -1,13 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { user, signup } = useAuth();
+  const navigate = useNavigate();
+
+  if (user) return <Navigate to="/" replace />;
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Signup:", email);
+    try {
+      signup(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
@@ -29,6 +40,7 @@ function Signup() {
           minLength={6}
           required
         />
+        {error && <p className="auth-error">{error}</p>}
         <button type="submit">Create Account</button>
       </form>
       <p>

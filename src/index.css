@@ -292,3 +292,22 @@ h1 {
   text-align: center;
   color: #6b7280;
 }
+.logout-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: #fecaca;
+}
+
+.auth-error {
+  color: #b91c1c !important;
+  margin: 0;
+  font-size: 0.9rem;
+}

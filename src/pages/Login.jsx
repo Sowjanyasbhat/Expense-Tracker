@@ -1,13 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { user, login } = useAuth();
+  const navigate = useNavigate();
+
+  if (user) return <Navigate to="/" replace />;
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Login:", email);
+    try {
+      login(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
@@ -28,6 +39,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {error && <p className="auth-error">{error}</p>}
         <button type="submit">Login</button>
       </form>
       <p>

@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Expenses from "./pages/Expenses";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [expenses, setExpenses] = useState(() => {
@@ -36,30 +37,34 @@ function App() {
     <>
       <Navbar />
       <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Dashboard
-                expenses={expenses}
-                budget={budget}
-                onBudgetChange={setBudget}
-              />
-            }
-          />
-          <Route
-            path="/expenses"
-            element={
-              <Expenses
-                expenses={expenses}
-                onAddExpense={addExpense}
-                onDeleteExpense={deleteExpense}
-              />
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+       <Routes>
+  <Route
+    path="/"
+    element={
+      <ProtectedRoute>
+        <Dashboard
+          expenses={expenses}
+          budget={budget}
+          onBudgetChange={setBudget}
+        />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/expenses"
+    element={
+      <ProtectedRoute>
+        <Expenses
+          expenses={expenses}
+          onAddExpense={addExpense}
+          onDeleteExpense={deleteExpense}
+        />
+      </ProtectedRoute>
+    }
+  />
+  <Route path="/login" element={<Login />} />
+  <Route path="/signup" element={<Signup />} />
+</Routes>
       </div>
     </>
   );
