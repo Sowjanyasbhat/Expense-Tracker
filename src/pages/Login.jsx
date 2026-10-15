@@ -11,13 +11,14 @@ function Login() {
 
   if (user) return <Navigate to="/" replace />;
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setError("");
     try {
-      login(email, password);
+      await login(email, password);
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      setError("Invalid email or password.");
     }
   }
 

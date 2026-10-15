@@ -11,13 +11,18 @@ function Signup() {
 
   if (user) return <Navigate to="/" replace />;
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setError("");
     try {
-      signup(email, password);
+      await signup(email, password);
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      if (err.code === "auth/email-already-in-use") {
+        setError("An account with this email already exists.");
+      } else {
+        setError("Could not create account. Try again.");
+      }
     }
   }
 
